@@ -108,8 +108,17 @@
                         type: 'GET',
                         url: '{% url 'metabolite:check' %}',
                         success: function (response) {
-                            _this.metabolitesFilled = response['metabolites_filled'];
-                            _this.metabolitesPercentage = response['percentage'];
+                            _this.metabolitesFilled = response;
+                            if (_this.metabolitesFilled === true) {
+                                _this.stopMetaboliteChecker();
+                            }
+                        }
+                    });
+                    $.ajax({
+                        type: 'GET',
+                        url: '{% url 'metabolite:percent' %}',
+                        success: function (response) {
+                            _this.metabolitesPercentage = response;
                             if (_this.metabolitesFilled === true) {
                                 _this.stopMetaboliteChecker();
                             }

@@ -6,5 +6,6 @@ app_name = 'metabolite'
 urlpatterns = [
     path(r'', views.MetaboliteView.as_view(), name='metabolite_index'),
     path(r'single/', views.MetaboliteSingleView.as_view(), name='metabolite_single'),
-    path(r'check/', views.CheckMetabolites.as_view(), name='check')
+    path(r'check/', views.CheckMetabolites.as_view(), name='check'),
+    path(r'percent/', views.CheckMetabolitesPercent.as_view(), name='percent')
 ]

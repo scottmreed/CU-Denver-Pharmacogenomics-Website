@@ -61,10 +61,13 @@ class MetaboliteView(generic.ListView):
 
 class CheckMetabolites(APIView):
     def get(self, request):
-        response = {
-            'metabolites_filled': cache.get('precursors_to_metabolites_filled'),
-            'percentage': cache.get('percentage_of_metabolites_filled'),
-        }
+        response = cache.get('precursors_to_metabolites_filled')
+        return Response(response)
+
+
+class CheckMetabolitesPercent(APIView):
+    def get(self, request):
+        response = cache.get('percentage_of_metabolites_filled')
         return Response(response)
 
 
